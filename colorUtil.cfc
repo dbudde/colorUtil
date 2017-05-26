@@ -90,20 +90,28 @@ component extends="hexUtil" accessors="true" output="false" hint="Color utilitie
 		}
 
 
-		if (!isValidColorValue(arguments.alpha))
+		if (!arguments.keyExists("alpha") || !isValidColorValue(arguments.alpha))
 		{
 			arguments.alpha = 255;
 		}
 
 
 		// Handle hex color value.
-		if (len(arguments.hexColor) && isHexColor(arguments.hexColor))
+		if (arguments.keyExists("hexColor") && len(arguments.hexColor) && isHexColor(arguments.hexColor))
 		{
 			return hexToColor(arguments.hexColor, arguments.alpha);
 		}
 
 		// Handle RGBA color value.
-		else if (isValidColorValue(arguments.red) && isValidColorValue(arguments.green) && isValidColorValue(arguments.blue) && isValidColorValue(arguments.alpha))
+		else if (
+			arguments.keyExists("red") &&
+			arguments.keyExists("green") &&
+			arguments.keyExists("blue") &&
+			isValidColorValue(arguments.red) && 
+			isValidColorValue(arguments.green) && 
+			isValidColorValue(arguments.blue) && 
+			isValidColorValue(arguments.alpha)
+		)
 		{
 			return createColor(argumentCollection = arguments);
 		}
@@ -127,7 +135,7 @@ component extends="hexUtil" accessors="true" output="false" hint="Color utilitie
 		local.rgba = hexToRGB(arguments.hexColor);
 		local.rgba["alpha"] = arguments.alpha;
 
-		return createColor(argumentsCollection = local.rgba);
+		return createColor(argumentCollection = local.rgba);
 	}
 
 

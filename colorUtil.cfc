@@ -118,7 +118,7 @@ component extends="hexUtil" accessors="true" output="false" hint="Color utilitie
 	}
 
 
-	public any function hexToColor(required string hexColor, numeric alpha = 255) 
+	public numeric function hexToColor(required string hexColor, numeric alpha = 255) 
 		hint="Takes a hex based web color and returns a java Color object. Returns a 'black' color object if an invalid hex color is given."
 	{
 		if (!isHexColor(arguments.hexColor))
@@ -160,7 +160,7 @@ component extends="hexUtil" accessors="true" output="false" hint="Color utilitie
 	}
 
 
-	public any function rgbaToInteger(required numeric red, required numeric green, required numeric blue, required numeric alpha) 
+	public numeric function rgbaToInteger(required numeric red, required numeric green, required numeric blue, required numeric alpha) 
 		hint="Takes a RGBA struct and converts it to a single integer RGBA. Assumes that all color values are valid (between 0 - 255)."
 	{
 		arguments.red = bitAnd(castInt(arguments.red), castInt(255));

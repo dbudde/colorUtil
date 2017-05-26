@@ -139,7 +139,7 @@ component extends="hexUtil" accessors="true" output="false" hint="Color utilitie
 	}
 
 
-	public struct function hexToRGB(required string hexColor) hint="Converts a hex based color to an RGB representation."
+	public struct function hexToRGB(required string hexColor) hint="Converts a hex based color to a RGB representation."
 	{
 		local.rgb = {"red" = 0, "green" = 0, "blue" = 0};
 
@@ -151,6 +151,15 @@ component extends="hexUtil" accessors="true" output="false" hint="Color utilitie
 		}
 
 		return local.rgb;
+	}
+
+
+	public struct function hexToRGBA(required string hexColor) hint="Converts a hex based color to a RGBA representation."
+	{
+		local.rgba = hexToRGB(arguments.hexColor);
+		local.rgba["alpha"] = 255;
+
+		return local.rgba;
 	}
 
 

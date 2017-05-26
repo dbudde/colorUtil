@@ -186,7 +186,7 @@ component extends="hexUtil" accessors="true" output="false" hint="Color utilitie
 	}
 
 
-	public any function rgbToColor(required numeric red, required numeric green, required numeric blue, required numeric alpha) 
+	public any function rgbToColor(required numeric red, required numeric green, required numeric blue, required numeric alpha = 255) 
 		hint="Converts RGB to a Java color object."
 	{
 		if (!isValidColorValue(arguments.red))
